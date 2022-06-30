@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperatura</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+        <h1>Conversor de Temperatura</h1>
+        <h2>Fahrenheit -> Celsius</h2>
+        <img src="giphy.gif" alt="temperatura">
+        <main>
+<div class="container">
+    <label for="fahrenheit">Informe o valor em graus Celsius</label>
+    <br>
+    <input  type="text" id="fahrenheit" name="fahrenheit">
+    <br>
+
+    <button onclick="calcula()">Calcular</button>
+    <br>
+    <br>
+    
+    <p id="c"></p>
+
+    <P>Fórmula: °C = (°F - 32) / 1,8</P>
+
+</div>
+    </main>
+    <script>
+        function calcula(){
+            let situacao="";
+            let cor="black"
+            let f = parseFloat(document.getElementById("fahrenheit").value);
+            let c = (f - 32) / 1.8;
+
+            c = c.toFixed(1);
+
+            if (c>=41){
+                situacao="Hipertermia";
+                cor="red";
+            } else if (c>=39.6){
+                situacao="Febre alta";
+                cor="orange";
+            } else if (c>=37.6){
+                situacao="Febre";
+                cor="yellow";
+            } else if (c>=36){
+                situacao="Normal";
+                cor="green";
+            } else {
+                situacao="Hipotermia";
+                cor="blue";              
+            }
+
+        document.getElementById("c").innerHTML = c + " " + situacao;
+        document.getElementById("c").style.background = cor;
+    }
+    </script>
+</body>
+</html>
